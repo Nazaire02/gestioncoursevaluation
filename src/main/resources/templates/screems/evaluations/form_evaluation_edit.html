@@ -30,6 +30,7 @@
             <div class="card">
               <div class="card-body">
                 <form th:action="@{/evaluations/add}" method="post" th:object="${evaluations}">
+                  <input type="hidden" name="id" id="id" class="form-control" th:field="*{id}">
                   <div class="mb-3">
                     <label class="form-label">Labelle</label>
                     <input type="text" class="form-control" th:field="*{labelle}">
@@ -47,18 +48,18 @@
                     <input type="time" class="form-control" th:field="*{heure_fin}">
                   </div>
                   <!-- Ici normalement ce sont les classes dans lesquelles le prof enseigne-->
-                  <!-- <div class="mb-3">
+                  <div class="mb-3">
                     <label class="form-label" for="classe">Ecue</label>
-                    <select id="ecue" name="children" th:field="*{ecue}" class="form-select">
+                    <select id="ecue" name="ecue" th:field="*{ecue.id}" class="form-select">
                       <option th:each="ecue : ${ecues}" th:value="${ecue.id}" th:text="${ecue.libelle}"></option>
                     </select>
                   </div>
                   <div class="mb-3">
                     <label class="form-label" for="classe">Classe</label>
-                    <select id="classe" name="children" th:field="*{classe}" class="form-select">
+                    <select id="classe" name="children" th:field="*{classe.id}" class="form-select">
                       <option th:each="classe : ${classes}" th:value="${classe.id}" th:text="${classe.libelle}"></option>
                     </select>
-                  </div> -->
+                  </div>
                   <button type="submit" class="btn btn-primary">Valider</button>
                 </form>
               </div>

@@ -37,7 +37,7 @@ public class EnseignantController {
     }
 
     @PostMapping("/enseignant/add")
-    public String addEnseignant(Enseignant enseignant, @RequestParam("classeIds") List<Integer> classeIds){
+    public String addEnseignant(Enseignant enseignant){
         //List<Classe> classesSelectionnees = cs.classeListByIds(classeIds);
         //enseignant.getClasses().addAll(classesSelectionnees);
         //enseignant.setClasses(new HashSet<>(classesSelectionnees));

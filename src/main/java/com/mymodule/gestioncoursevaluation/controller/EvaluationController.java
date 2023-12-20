@@ -52,6 +52,7 @@ public class EvaluationController {
     public String showEditForm(@PathVariable("id") Integer id, Model model){
         Evaluation evaluation = evaluationService.getEvaluation(id);
         model.addAttribute("classes", cs.classeListe());
+        model.addAttribute("ecues", ecueService.ecueListe());
         model.addAttribute("pageTitle", "Modifier les informations de votre choix");
         model.addAttribute("evaluations", evaluation);
         return "screems/evaluations/form_evaluation_edit";

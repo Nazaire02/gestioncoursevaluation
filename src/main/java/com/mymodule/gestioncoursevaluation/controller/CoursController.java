@@ -1,9 +1,12 @@
 package com.mymodule.gestioncoursevaluation.controller;
 
 import com.mymodule.gestioncoursevaluation.GlobalVariables;
+import com.mymodule.gestioncoursevaluation.MailConfiguration;
+import com.mymodule.gestioncoursevaluation.MailSenderService;
 import com.mymodule.gestioncoursevaluation.models.Cours;
 import com.mymodule.gestioncoursevaluation.models.Enseignant;
 import com.mymodule.gestioncoursevaluation.models.Etudiant;
+import com.mymodule.gestioncoursevaluation.models.UserLog;
 import com.mymodule.gestioncoursevaluation.services.ClasseService;
 import com.mymodule.gestioncoursevaluation.services.CoursService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +22,11 @@ import java.util.List;
 public class CoursController {
     @Autowired private CoursService coursService;
     @Autowired private ClasseService cs;
+    @Autowired private MailSenderService mailService;
+    //private final MailSenderService mailService;
+
     @GetMapping("/cours")
-    public String enseignantListe(Model model){
+    public String coursListe(Model model){
         List<Cours> allCours = coursService.allCours();
         model.addAttribute("cours", allCours);
         model.addAttribute("isAdmin", false);

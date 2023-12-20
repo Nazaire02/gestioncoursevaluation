@@ -4,9 +4,11 @@ import com.mymodule.gestioncoursevaluation.GlobalVariables;
 import com.mymodule.gestioncoursevaluation.models.Enseignant;
 import com.mymodule.gestioncoursevaluation.models.Etudiant;
 import com.mymodule.gestioncoursevaluation.models.Login;
+import com.mymodule.gestioncoursevaluation.models.UserLog;
 import com.mymodule.gestioncoursevaluation.services.EnseignantService;
 import com.mymodule.gestioncoursevaluation.services.EtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,7 +30,7 @@ public class LoginController {
                 if (loginData.getPassword().equals(globalVariables.getEnseignantLog().getPassword())){
                     model.addAttribute("isAdmin", false);
                     ra.addAttribute("enseignantLog", globalVariables.getEnseignantLog());
-                    return "redirect:/index/enseignant";
+                    return "redirect:/cours";
                 }
             }
         } else if (loginData.getUsertype().equals("etudiant")) {
@@ -36,10 +38,9 @@ public class LoginController {
             etudiantLog = globalVariables.getEtudiantLog();
             if (etudiantLog != null){
                 if (loginData.getPassword().equals(etudiantLog.getPassword())){
-                    System.out.println(globalVariables.getEnseignantLog());
                     model.addAttribute("isAdmin", false);
                     ra.addAttribute("etudiantLog", etudiantLog);
-                    return "redirect:/index/etudiant";
+                    return "redirect:/cours";
                 }
             }
         }
